@@ -3,7 +3,7 @@ pipeline {
 		label 'master'		
 	} 
     tools { 
-		label 'maven'	
+		label 'Maven'	
 		jdk 'java8'
 	} 
     

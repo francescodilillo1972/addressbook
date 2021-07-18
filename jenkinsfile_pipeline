@@ -1,0 +1,52 @@
+pipeline {
+    agent { 
+		label 'master'		
+	} 
+    tools { 
+		label 'maven'	
+		jdk 'java8'
+	} 
+    
+	stages {
+        stage('Code Validate') {
+            steps {
+                sh """
+				echo "Perform validation"
+				mvn validate
+				"""
+            }
+		}
+        stage('Code Compile') {
+            steps {
+                sh """
+				echo "Perform Compile"
+				mvn compile
+				"""
+            }
+		}
+		stage('Code Test') {
+            steps {
+                sh """
+				echo "Perform Test"
+				mvn test
+				"""
+            }
+		}
+		stage('Code Package') {
+            steps {
+                sh """
+				echo "Perform Package"
+				mvn package
+				"""
+            }
+		}
+		stage('Code Verify') {
+            steps {
+                sh """
+				echo "Perform Verify"
+				mvn verify
+				"""
+            }
+		}
+    }
+}

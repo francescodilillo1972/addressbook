@@ -1,52 +1,123 @@
-pipeline {
-    agent { 
-		label 'master'		
-	} 
-    tools { 
-		maven 'Maven'	
-		jdk 'java8'
-	} 
-    
-	stages {
-        stage('Code Validate') {
-            steps {
-                sh """
-				echo "Perform validation"
-				mvn validate
-				"""
-            }
-		}
-        stage('Code Compile') {
-            steps {
-                sh """
-				echo "Perform Compile"
-				mvn compile
-				"""
-            }
-		}
-		stage('Code Test') {
-            steps {
-                sh """
-				echo "Perform Test"
-				mvn test
-				"""
-            }
-		}
-		stage('Code Package') {
-            steps {
-                sh """
-				echo "Perform Package"
-				mvn package
-				"""
-            }
-		}
-		stage('Code Verify') {
-            steps {
-                sh """
-				echo "Perform Verify"
-				mvn verify
-				"""
-            }
-		}
-    }
-}
+Skip to content
+devopstrainers1
+/
+addressbook
+forked from vaadin/addressbook
+Simple Addressbook example application
+
+ 2 stars  500 forks
+Code
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+More
+addressbook/Jenkinsfile_CI
+
+root Jenkins CI
+ History
+ 0 contributors
+101 lines (43 sloc)  980 Bytes
+pipeline {
+
+    agent{
+
+            label 'master'
+
+    }
+
+    tools {
+
+
+
+           maven 'maven' 
+
+           jdk 'java8'
+
+    }
+
+
+
+    stages{
+
+        stage ('Code Validate'){
+
+            steps {
+
+                
+
+                sh """
+
+                echo "Perform Validate"
+
+                mvn validate
+
+                """
+
+
+
+            }
+
+        }
+
+        stage ('Code Compilation'){
+
+            steps {
+
+                sh """
+
+                echo "Perform Compilation"
+
+                mvn compile
+
+                """
+
+            }
+
+        }
+
+
+
+        stage ('Code Test'){
+
+            steps{
+
+                sh """
+
+                echo "To test the code"
+
+                mvn test
+
+                """
+
+            }
+
+        }
+
+        stage ('Code Package') {
+
+            steps{
+
+                sh """
+
+                echo "Create the package"
+
+                mvn package
+
+                """
+
+            }
+
+        }
+
+
+
+        }
+
+    
+
+    }
+
+
